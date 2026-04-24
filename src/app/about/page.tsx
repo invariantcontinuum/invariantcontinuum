@@ -1,23 +1,24 @@
+"use client";
+import { motion } from "framer-motion";
 import AnimatedSection from "../../components/AnimatedSection";
+import { useTranslation } from "../../context/LanguageContext";
 
 export default function About() {
+  const { t } = useTranslation();
   return (
-    <div className="py-24 bg-white dark:bg-gray-950 transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <div className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <AnimatedSection>
-          <h1 className="text-5xl font-extrabold mb-10 text-gray-900 dark:text-white">About Us</h1>
-          <div className="mb-12 rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800">
+          <h1 className="text-5xl font-extrabold mb-10 text-white">About Us</h1>
+          <motion.div className="mb-12 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10" whileHover={{ scale: 1.01 }}>
             <img src="/images/about.jpg" alt="About invariant Continuum" className="w-full object-cover aspect-[21/9]" />
-          </div>
-          <p className="text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed font-light">
-            Decentralized intelligence with mathematical guarantees.
+          </motion.div>
+          <p className="text-2xl text-gray-400 mb-8 leading-relaxed font-light">
+            Mathematical Rigor for Decentralized Systems
           </p>
-          <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-400 space-y-6">
-            <p className="text-lg">
-              invariant Continuum applies rigorous mathematics to decentralized systems. We model protocols as state machines, prove safety and liveness properties, and generate executable code from verified specifications.
-            </p>
-            <p className="text-lg">
-              Our open-source proof assistants and model checkers are used by blockchain developers, distributed systems researchers, and safety-critical engineers who refuse to hope their code is correct.
+          <div className="space-y-6">
+            <p className="text-lg text-gray-400 leading-relaxed">
+              invariant Continuum models protocols as state machines, proves safety and liveness properties, and generates executable code from verified specifications. Our proof assistants are used by blockchain developers and safety-critical engineers.
             </p>
           </div>
         </AnimatedSection>

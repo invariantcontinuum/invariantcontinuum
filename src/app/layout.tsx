@@ -4,18 +4,16 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import { LanguageProvider } from "../context/LanguageContext";
-import { ThemeProvider } from "../context/ThemeContext";
+import { ThemeProvider as CustomThemeProvider } from "../context/ThemeContext";
+import ThemeRegistry from "../components/ThemeRegistry";
+import DecorativeBackground from "../components/DecorativeBackground";
 
 export const metadata: Metadata = {
   title: "invariant Continuum",
-  description: "Formal verification and decentralized intelligence with mathematical rigor.",
+  description: "Decentralized intelligence with mathematical guarantees. Formal verification for the real world.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="transition-colors duration-300">
       <head>
@@ -28,22 +26,25 @@ export default function RootLayout({
               extend: {
                 colors: {
                   primary: '#06B6D4',
-                  secondary: '#dc2626',
+                  secondary: '#22D3EE',
                 }
               }
             }
           }
         `}}></script>
       </head>
-      <body className="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
-        <LanguageProvider>
-          <ThemeProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <CookieBanner />
-          </ThemeProvider>
-        </LanguageProvider>
+      <body className="flex flex-col min-h-screen font-sans transition-colors duration-300" style={{ backgroundColor: '#020a0f', color: '#e0f7ff' }}>
+        <ThemeRegistry>
+          <LanguageProvider>
+            <CustomThemeProvider>
+              <DecorativeBackground />
+              <Header />
+              <main className="flex-1 relative z-10">{children}</main>
+              <Footer />
+              <CookieBanner />
+            </CustomThemeProvider>
+          </LanguageProvider>
+        </ThemeRegistry>
       </body>
     </html>
   );
